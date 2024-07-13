@@ -16,8 +16,6 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
     const [theme, setTheme] = React.useState<"dark" | "light">(currentTheme)
 
-    console.log('theme', theme, currentTheme)
-
     const toggleTheme = () => {
         setTheme((prevTheme) => {
             const newTheme = prevTheme === "light" ? "dark" : "light";
