@@ -1,6 +1,7 @@
 import React from "react"
-import { Control, useController } from "react-hook-form"
+import {Control, useController, UseFormRegister} from "react-hook-form"
 import { Input as NextInput } from "@nextui-org/react"
+import {Register} from "../../features/user/register";
 
 type Props = {
     name: string
@@ -10,6 +11,7 @@ type Props = {
     control: Control<any>
     required?: string
     endContent?: JSX.Element
+    registerForm?: UseFormRegister<Register>
 }
 
 export const Input: React.FC<Props> = ({
@@ -20,6 +22,7 @@ export const Input: React.FC<Props> = ({
                                            control,
                                            required = "",
                                            endContent,
+                                           registerForm,
                                        }) => {
     const {
         field,
@@ -44,6 +47,7 @@ export const Input: React.FC<Props> = ({
             onBlur={field.onBlur}
             errorMessage={`${errors[name]?.message ?? ""}`}
             endContent={endContent}
+            registerForm
         />
     )
 }

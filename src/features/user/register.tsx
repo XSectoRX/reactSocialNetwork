@@ -6,7 +6,7 @@ import { ErrorMessage } from "../../components/error-message"
 import { hasErrorField } from "../../utils/has-error-field"
 import { useState } from "react"
 
-type Register = {
+export type Register = {
     email: string
     name: string
     password: string
@@ -18,6 +18,7 @@ type Props = {
 
 export const Register = ({ setSelected }: Props) => {
     const {
+        register: refisterForm,
         handleSubmit,
         control,
         formState: { errors },
@@ -31,7 +32,7 @@ export const Register = ({ setSelected }: Props) => {
         },
     })
 
-    const [register] = useRegisterMutation()
+    const [ register ] = useRegisterMutation()
     const [error, setError] = useState("")
 
     const onSubmit = async (data: Register) => {
@@ -59,6 +60,12 @@ export const Register = ({ setSelected }: Props) => {
                 label="Email"
                 type="email"
                 required="Обязательное поле"
+                {...refisterForm("email", {
+                    pattern: {
+                        value: /\S+@\S+\.\S+/,
+                        message: "Введённое значение не соответствует формату email",
+                    },
+                })}
             />
             <Input
                 control={control}

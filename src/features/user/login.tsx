@@ -21,6 +21,7 @@ type Props = {
 
 export const Login = ({ setSelected }: Props) => {
     const {
+        register: refisterForm,
         handleSubmit,
         control,
         formState: { errors },
@@ -57,6 +58,12 @@ export const Login = ({ setSelected }: Props) => {
                 label="Email"
                 type="email"
                 required="Обязательное поле"
+                {...refisterForm("email", {
+                    pattern: {
+                        value: /\S+@\S+\.\S+/,
+                        message: "Введённое значение не соответствует формату email",
+                    },
+                })}
             />
             <Input
                 control={control}
