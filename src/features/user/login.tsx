@@ -54,7 +54,6 @@ export const Login = ({ setSelected }: Props) => {
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
             <Input
                 control={control}
-                name="email"
                 label="Email"
                 type="email"
                 required="Обязательное поле"

@@ -1,5 +1,5 @@
 import React from "react"
-import {Control, useController, UseFormRegister} from "react-hook-form"
+import {Control, useController, UseFormRegister,FieldValues } from "react-hook-form"
 import { Input as NextInput } from "@nextui-org/react"
 import {Register} from "../../features/user/register";
 
@@ -9,9 +9,9 @@ type Props = {
     placeholder?: string
     type?: string
     control: Control<any>
-    required?: string
+    required?: string  | boolean
     endContent?: JSX.Element
-    registerForm?: UseFormRegister<Register>
+
 }
 
 export const Input: React.FC<Props> = ({
@@ -20,9 +20,9 @@ export const Input: React.FC<Props> = ({
                                            placeholder,
                                            type,
                                            control,
-                                           required = "",
+                                           required,
                                            endContent,
-                                           registerForm,
+
                                        }) => {
     const {
         field,
@@ -47,7 +47,6 @@ export const Input: React.FC<Props> = ({
             onBlur={field.onBlur}
             errorMessage={`${errors[name]?.message ?? ""}`}
             endContent={endContent}
-            registerForm
         />
     )
 }

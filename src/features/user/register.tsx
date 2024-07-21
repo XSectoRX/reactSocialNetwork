@@ -56,7 +56,6 @@ export const Register = ({ setSelected }: Props) => {
             />
             <Input
                 control={control}
-                name="email"
                 label="Email"
                 type="email"
                 required="Обязательное поле"
